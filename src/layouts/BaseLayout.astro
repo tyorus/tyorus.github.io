@@ -1,0 +1,222 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  math?: boolean;
+  home?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  math = false,
+  home = false,
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${site.title}` : `${site.title} — ${site.name}`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.title} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,650;1,400&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    {
+      math && (
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+          crossorigin="anonymous"
+        />
+      )
+    }
+    {
+      site.analyticsId && (
+        <>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}`} />
+          <script is:inline define:vars={{ analyticsId: site.analyticsId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', analyticsId);
+          </script>
+        </>
+      )
+    }
+  </head>
+  <body class:list={[{ 'is-home': home }]}>
+    <header class="site-header">
+      <div class="site-shell site-header__inner">
+        <a class="brand" href="/">{site.title}</a>
+
+        <nav class="nav nav--desktop" aria-label="Primary">
+          <div class="nav__links">
+            <a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a>
+            <a href="/resume" aria-current={path.startsWith('/resume') ? 'page' : undefined}
+              >Resume</a
+            >
+            <a href="/projects" aria-current={path.startsWith('/projects') ? 'page' : undefined}
+              >Projects</a
+            >
+            <a href="/tutorials" aria-current={path.startsWith('/tutorials') ? 'page' : undefined}
+              >Tutorials</a
+            >
+            <a href="/blog" aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+            <a href={`mailto:${site.email}`}>Contact</a>
+          </div>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle light and dark mode"
+            title="Toggle theme"
+          >
+            <span class="icon-sun" aria-hidden="true">☀</span>
+            <span class="icon-moon" aria-hidden="true">☾</span>
+          </button>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Open menu"
+          >
+            <span class="nav-toggle__lines" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <nav class="nav nav--mobile" id="site-nav" aria-label="Mobile">
+      <div class="nav__panel">
+        <p class="nav__eyebrow">Navigate</p>
+        <div class="nav__links">
+          <a href="/" aria-current={path === '/' ? 'page' : undefined} style="--i: 0">Home</a>
+          <a
+            href="/resume"
+            aria-current={path.startsWith('/resume') ? 'page' : undefined}
+            style="--i: 1">Resume</a
+          >
+          <a
+            href="/projects"
+            aria-current={path.startsWith('/projects') ? 'page' : undefined}
+            style="--i: 2">Projects</a
+          >
+          <a
+            href="/tutorials"
+            aria-current={path.startsWith('/tutorials') ? 'page' : undefined}
+            style="--i: 3">Tutorials</a
+          >
+          <a
+            href="/blog"
+            aria-current={path.startsWith('/blog') ? 'page' : undefined}
+            style="--i: 4">Blog</a
+          >
+          <a href={`mailto:${site.email}`} style="--i: 5">Contact</a>
+        </div>
+        <div class="nav__footer">
+          <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class:list={[{ 'home-main': home }]}>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-shell site-footer__inner">
+        <p>© {new Date().getFullYear()} {site.name}</p>
+        <p>
+          <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href={site.links.email}>Email</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      const body = document.body;
+      const themeBtn = document.querySelector('.theme-toggle');
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('#site-nav');
+      const backdrop = document.querySelector('#nav-backdrop');
+
+      const setNavOpen = (open) => {
+        nav?.classList.toggle('is-open', open);
+        backdrop?.classList.toggle('is-open', open);
+        body.classList.toggle('nav-open', open);
+        if (backdrop) backdrop.hidden = !open;
+        navToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+
+      themeBtn?.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+
+      navToggle?.addEventListener('click', () => {
+        setNavOpen(!nav?.classList.contains('is-open'));
+      });
+
+      backdrop?.addEventListener('click', () => setNavOpen(false));
+
+      nav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setNavOpen(false));
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setNavOpen(false);
+      });
+    </script>
+  </body>
+</html>

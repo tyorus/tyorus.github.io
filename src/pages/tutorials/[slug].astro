@@ -1,0 +1,23 @@
+---
+import ContentDoc from '../../components/ContentDoc.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('tutorials');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<ContentDoc
+  entry={post}
+  Content={Content}
+  headings={headings}
+  section="tutorials"
+  sectionLabel="tutorials"
+/>

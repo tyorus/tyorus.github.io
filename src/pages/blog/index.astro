@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title="Blog"
+  description="Technical notes on MetOcean, data, modelling, and infrastructure."
+>
+  <section class="site-shell page-hero">
+    <h1>Blog</h1>
+    <p>Notes and working write-ups — read like docs: clear structure, formulas, and code.</p>
+  </section>
+
+  <section class="site-shell section">
+    <div class="section__head">
+      <h2 class="section__title">All posts</h2>
+      <span class="section__link">{posts.length} articles</span>
+    </div>
+    <ul class="post-list">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`}>
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              <div>
+                <h3>{post.data.title}</h3>
+                <p>
+                  {[...post.data.categories, ...post.data.tags.slice(0, 2)]
+                    .filter((v, i, arr) => arr.indexOf(v) === i)
+                    .join(' · ')}
+                </p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

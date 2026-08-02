@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { resume } from '../data/resume';
+---
+
+<BaseLayout home>
+  <section class="hero">
+    <p class="hero__role">{site.roles.join(' · ')}</p>
+    <h1 class="hero__brand">{site.title}</h1>
+    <p class="hero__name">{site.name}</p>
+    <p class="hero__lede">{site.tagline}</p>
+    <ul class="hero__focus">
+      {resume.focus.map((item) => <li>{item}</li>)}
+    </ul>
+    <div class="cta-row">
+      <a class="btn btn--primary" href="/resume">View resume</a>
+      <a class="btn btn--ghost" href="/projects">Projects</a>
+      <a class="btn btn--ghost" href="/tutorials">Tutorials</a>
+      <a class="btn btn--ghost" href="/blog">Blog</a>
+    </div>
+  </section>
+</BaseLayout>

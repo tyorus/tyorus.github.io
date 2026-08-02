@@ -1,0 +1,50 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  /** Unique page URL for Disqus thread identity */
+  pageUrl: string;
+  /** Unique page identifier (stable across title changes) */
+  pageId: string;
+}
+
+const { pageUrl, pageId } = Astro.props;
+const shortname = site.disqusShortname;
+---
+
+{
+  shortname && (
+    <section class="comments" id="comments" aria-label="Comments">
+      <h2 class="comments__title">Comments</h2>
+      <div id="disqus_thread"></div>
+      <script is:inline define:vars={{ shortname, pageUrl, pageId }}>
+        window.disqus_config = function () {
+          this.page.url = pageUrl;
+          this.page.identifier = pageId;
+        };
+
+        (function () {
+          const existing = document.querySelector('script[data-disqus]');
+          if (existing) {
+            if (window.DISQUS) {
+              window.DISQUS.reset({
+                reload: true,
+                config: window.disqus_config,
+              });
+            }
+            return;
+          }
+          const s = document.createElement('script');
+          s.src = `https://${shortname}.disqus.com/embed.js`;
+          s.setAttribute('data-timestamp', String(+new Date()));
+          s.setAttribute('data-disqus', 'true');
+          (document.head || document.body).appendChild(s);
+        })();
+      </script>
+      <noscript>
+        Enable JavaScript to view
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </section>
+  )
+}

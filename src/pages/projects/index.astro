@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('projects')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected projects across MetOcean modelling, data systems, and experiments."
+>
+  <section class="site-shell page-hero">
+    <h1>Projects</h1>
+    <p>Selected work — experiments, benchmarks, and longer-running builds.</p>
+  </section>
+
+  <section class="site-shell section">
+    <div class="section__head">
+      <h2 class="section__title">All projects</h2>
+      <span class="section__link">{posts.length} items</span>
+    </div>
+    {
+      posts.length > 0 ? (
+        <ul class="project-list">
+          {posts.map((post) => (
+            <li>
+              <a href={`/projects/${post.id}`} class="project">
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description || formatDate(post.data.pubDate)}</p>
+                <div class="project__tags">
+                  {post.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p style="color: var(--ink-muted); margin: 0;">No projects yet.</p>
+      )
+    }
+  </section>
+</BaseLayout>
