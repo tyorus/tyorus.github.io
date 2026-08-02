@@ -21,7 +21,7 @@ timezone: Asia/Jakarta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Yo Thunder                          # the main title
+title: Tyosupra                          # the main title
 
 tagline: A personal website from Suwignyo Prasetyo  # it will display as the sub-title
 
@@ -29,13 +29,13 @@ description: >-                        # used by seo meta and the atom feed
   A personal website from Suwignyo Prasetyo.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://yothunder.github.io'
+url: 'https://tyosupra.github.io'
 
 github:
-  username: yothunder             # change to your github username
+  username: tyosupra             # change to your github username
 
 twitter:
-  username: yothunder7            # change to your twitter username
+  username: tyosupra            # change to your twitter username
 
 social:
   # Change to your full name.
