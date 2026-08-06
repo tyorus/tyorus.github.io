@@ -1,7 +1,7 @@
 export const services = {
-  headline: 'Operational Intelligence Briefs for Marketing Agencies & Ops Teams',
+  headline: 'Selective freelance automation for agencies & ops teams',
   lede:
-    'Turn weekly Ads exports, CRM CSVs, and ops sheets into one brief: data readiness, anomaly flags, a written narrative of what changed, and delivery to email/Slack — without another dashboard login. Built with production data-engineering discipline (including metocean/ops systems experience).',
+    'Personal freelance work rooted in production data-engineering experience (including metocean/ops systems): turn weekly Ads exports, CRM CSVs, and ops sheets into one brief — data readiness, anomaly flags, a written narrative of what changed, and delivery to email/Slack — without another dashboard login.',
   problems: [
     'Weekly client packs still assembled by hand from Ads + CRM + spreadsheets',
     'Anomalies (CPA spikes, zero conversions, low NPS) spotted after the update was sent',
@@ -33,9 +33,15 @@ export const services = {
     },
   ],
   proof: [
-    'Demo: Agency Operational Intelligence Brief — Ads + CRM + ops sheet → anomalies + narrative + email/Slack delivery',
+    'Project write-up: Operational Intelligence Brief — Ads + CRM + ops sheet → anomalies + narrative + email/Slack delivery',
     'Background as a Metocean Data Engineer: production pipelines, QC, orchestration, APIs, Docker/Linux, HPC',
-    'Same engine remaps to ecommerce or environmental consulting workflows when needed',
+    'Same engine remaps to ecommerce or ops/consulting workflows when needed',
   ],
-  cta: 'Email a short description of your weekly pack (sources + who reads it). I will reply with approach, timeline, and whether an audit or build fits.',
+  emailChecklist: [
+    'Sources you pull today (Ads, CRM, sheets, etc.)',
+    'How often the pack goes out (weekly / monthly)',
+    'Who reads it and what decision it should drive',
+    'Where it should land (email, Slack, both)',
+  ],
+  cta: 'Email a short description of your weekly pack. I will reply with approach, timeline, and whether an audit or build fits.',
 } as const;

@@ -5,6 +5,7 @@ pubDate: "2022-10-24 10:00:00"
 tags: ["met","physical meteorology"]
 categories: ["Meteorology & Climatology"]
 math: true
+lang: id
 ---
 
 ## Formula

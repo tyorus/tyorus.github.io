@@ -5,6 +5,7 @@ pubDate: "2022-12-5 07:00:00"
 tags: ["met","stat","data visualization"]
 categories: ["Meteorology & Climatology","Statistics"]
 math: true
+lang: id
 ---
 
 Postingan ini merupakan lanjutan dari postingan sebelumnya [Uji Hipotesis Statistik: Penerapannya dalam Meteorologi/Klimatologi](/blog/uji-hipotesis/).

@@ -5,6 +5,7 @@ pubDate: "2022-11-28 07:00:00"
 tags: ["met","stat"]
 categories: ["Meteorology & Climatology","Statistics"]
 math: true
+lang: id
 ---
 
 Sebuah uji hipotesis statistik dilakukan berdasarkan data sampel untuk menguji apakah hipotesis yang diajukan dapat diterima atau ditolak. Dalam hal ini, hipotesis statistik mengacu pada asumsi mengenai parameter populasi[^1].

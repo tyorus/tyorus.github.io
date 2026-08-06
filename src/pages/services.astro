@@ -6,7 +6,7 @@ import { services } from '../data/services';
 
 <BaseLayout
   fullTitle={`Services — ${site.name} · ${site.title}`}
-  description={`Automation services by ${site.name}, Metocean Data Engineer — operational intelligence briefs, data workflows, and reporting systems for agencies and ops teams.`}
+  description={`Selective freelance automation by ${site.name}, Metocean Data Engineer — operational intelligence briefs and data workflows for agencies and ops teams.`}
 >
   <section class="site-shell page-hero">
     <h1>Services</h1>
@@ -51,14 +51,17 @@ import { services } from '../data/services';
         {services.proof.map((item) => <li>{item}</li>)}
       </ul>
       <div class="cta-row" style="margin-top: 1.25rem;">
-        <a class="btn btn--ghost" href="/projects/automated-reporting">Automated reporting demo</a>
+        <a class="btn btn--ghost" href="/projects/automated-reporting">Operational brief project</a>
         <a class="btn btn--ghost" href="/projects">All projects</a>
       </div>
     </div>
 
     <div class="resume-block">
-      <h2>Next step</h2>
-      <p>{services.cta}</p>
+      <h2>What to email me</h2>
+      <ul class="focus-list">
+        {services.emailChecklist.map((item) => <li>{item}</li>)}
+      </ul>
+      <p style="margin-top: 1rem;">{services.cta}</p>
       <div class="cta-row" style="margin-top: 1.25rem;">
         <a class="btn btn--primary" href={`mailto:${site.email}`}>Email {site.email}</a>
       </div>

@@ -5,6 +5,7 @@ pubDate: "2026-05-31 15:15:00"
 tags: ["data-engineering-analytics"]
 categories: ["Data Engineering and Analytics"]
 math: false
+lang: id
 ---
 
 ## Dokumentasi Komprehensif: Hands-on Practice vs Emulator Floci Limitations

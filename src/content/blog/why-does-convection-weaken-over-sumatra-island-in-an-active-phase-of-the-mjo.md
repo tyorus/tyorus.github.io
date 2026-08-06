@@ -5,6 +5,7 @@ pubDate: "2022-11-7 19:00:00"
 tags: ["met","physical meteorology","convection","MJO"]
 categories: ["Meteorology & Climatology"]
 math: true
+lang: id
 ---
 
 Pertama kali melihat judul ini aku pikir cukup provokatif. Memang, tipe judul kalimat tanya seringkali lebih menarik untuk dibaca karena kesannya lebih spesifik pembahasannya, sesuai dengan judul yang diangkat.

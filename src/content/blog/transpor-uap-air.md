@@ -5,6 +5,7 @@ pubDate: "2022-10-17 09:00:00"
 tags: ["met","physical meteorology"]
 categories: ["Meteorology & Climatology"]
 math: true
+lang: id
 ---
 
 Sebagaimana yang kita tahu, air di permukaan dan atmosfer bumi secara kontinu mengalami transformasi dari satu fase ke fase lain. Proses dauriah semacam itu terjadi karena bertujuan untuk menjaga keseimbangan komponen air di laut, darat, dan atmosfer. 

@@ -5,6 +5,7 @@ pubDate: "2022-10-31 07:00:00"
 tags: ["met","physical meteorology"]
 categories: ["Meteorology & Climatology"]
 math: true
+lang: id
 ---
 
 *Moisture flux divergence* (MFD) merupakan besaran skalar yang menunjukkan laju aliran hulu dan hilir (*source and sink*) yang membawa konstituen kelembapan atau uap air pada koordinat tekanan atmosfer. MFD diformulasikan sebagai berikut.

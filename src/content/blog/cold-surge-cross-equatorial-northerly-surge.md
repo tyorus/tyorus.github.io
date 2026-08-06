@@ -5,6 +5,7 @@ pubDate: "2022-11-21 07:00:00"
 tags: ["met","monsoon","cold surge"]
 categories: ["Meteorology & Climatology"]
 math: true
+lang: id
 ---
 
 *Cold surge* (CS) merupakan salah satu ciri khas dari pola skala sinoptik yang terjadi saat Monsun Dingin Asia. Fenomena ini berasosiasi dengan daerah bertekanan tinggi semi permanen di daerah Siberia (Siberian Mongolian High) yang terjadi pada periode musim dingin di belahan bumi utara[^1]. Daerah bertekanan tinggi ini menghasilkan aliran massa udara dingin bersifat kering yang bergerak ke arah selatan melalui pantai selatan Cina dan atau ke timur menuju Samudra Pasifik bagian utara[^2]. Aliran massa udara dingin dengan intensitas yang kuat biasanya bisa mencapai daerah tropis dalam durasi waktu harian hingga mingguan, fenomena ini yang kemudian disebut sebagai CS atau seruakan dingin[^3].

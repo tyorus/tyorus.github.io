@@ -5,6 +5,7 @@ pubDate: "2024-10-10 14:00:00"
 tags: ["model","ocean"]
 categories: ["Oceanography","Modelling"]
 math: true
+lang: en
 ---
 
 Upwelling region can be estimated from surface wind. This is done through Ekman Pumping Velocity, derivied from wind stress and wind stress curl. Following Simanjuntak and Lin (2022)[^1], this article will explain step by step calculation on how to derivied Ekman Pumping Velocity to determine upwelling region based on multidimensional gridded data.

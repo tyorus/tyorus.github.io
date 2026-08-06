@@ -40,7 +40,10 @@ function formatDate(date: Date) {
                   {formatDate(post.data.pubDate)}
                 </time>
                 <div>
-                  <h3>{post.data.title}</h3>
+                  <h3>
+                    <span class="lang-badge lang-badge--inline">{post.data.lang === 'id' ? 'ID' : 'EN'}</span>
+                    {post.data.title}
+                  </h3>
                   <p>
                     {[...post.data.categories, ...post.data.tags.slice(0, 2)]
                       .filter((v, i, arr) => arr.indexOf(v) === i)

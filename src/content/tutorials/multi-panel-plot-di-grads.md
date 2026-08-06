@@ -5,6 +5,7 @@ pubDate: "2022-11-14 07:00:00"
 tags: ["met","data visualization"]
 categories: ["Meteorology & Climatology"]
 math: true
+lang: id
 ---
 
 Untuk memplot banyak panel di GrADS, kita bisa menggunakan perintah `set parea`[^1] atau `set vpage`[^2]. Fungsi keduanya serupa, namun implementasinya tidak sama dan kadang mungkin cukup membingungkan bagi yang baru belajar GrADS.

@@ -5,7 +5,10 @@ pubDate: "2024-09-14 07:00:00"
 tags: ["model","ocean"]
 categories: ["Oceanography","Modelling"]
 math: true
+lang: id
 ---
+
+> **English intro.** Practical guide to building **WAVEWATCH III 7.14** with `cmake` (not the older `make` flow): compilers, dependencies, clone, configure, and common build failures when standing up a wave-model stack for metocean work.
 
 Model [WaveWatch3](https://github.com/NOAA-EMC/WW3/tree/develop) versi terbaru (7.14) dapat diinstall menggunakan bantuan `cmake`, alih-alih menggunakan `make` sebagaimana instalasi versi sebelumnya. 
 

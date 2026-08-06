@@ -5,7 +5,10 @@ pubDate: "2026-08-02"
 tags: ["WW3", "InaWaves", "HPC", "benchmark", "ocean", "BMKG"]
 categories: ["Ocean modelling"]
 math: true
+lang: id
 ---
+
+> **English abstract.** Performance benchmark of **InaWaves** (WAVEWATCH III®) on BMKG’s Disaster Recovery Center in Bali: which parallelization option (MPI / OMPG / OMPH) and node/core/thread layout runs operational nested-domain wave forecasts most efficiently versus the legacy Marine Data Center stack. Written for operators and metocean data engineers who need reproducible HPC choices, not just peak FLOPS.
 
 Laporan singkat performa **InaWaves** (WAVEWATCH III®) di Disaster Recovery Center (DRC) BMKG Bali — backup Marine Data Center (MDC) Jakarta dalam proyek Marine Meteorology System Phase 1 (MMS1). Fokusnya: opsi parallelization paling efisien dan konfigurasi node/core/thread untuk operasional.
 

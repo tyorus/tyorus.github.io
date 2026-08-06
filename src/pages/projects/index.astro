@@ -22,7 +22,10 @@ function formatDate(date: Date) {
 >
   <section class="site-shell page-hero">
     <h1>Projects</h1>
-    <p>Selected work — experiments, benchmarks, and longer-running builds.</p>
+    <p>
+      Proof of work across metocean modelling and production-minded automation —
+      benchmarks, pipelines, and systems you can evaluate for hiring or freelance fit.
+    </p>
   </section>
 
   <section class="site-shell section">
@@ -36,7 +39,10 @@ function formatDate(date: Date) {
           {posts.map((post) => (
             <li>
               <a href={`/projects/${post.id}`} class="project">
-                <h3>{post.data.title}</h3>
+                <h3>
+                  <span class="lang-badge lang-badge--inline">{post.data.lang === 'id' ? 'ID' : 'EN'}</span>
+                  {post.data.title}
+                </h3>
                 <p>{post.data.description || formatDate(post.data.pubDate)}</p>
                 <div class="project__tags">
                   {post.data.tags.map((tag) => (

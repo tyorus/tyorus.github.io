@@ -44,6 +44,9 @@ const keywords = [
   ...entry.data.categories,
 ];
 const bylineRoles = ['Data Engineer', 'Metocean Practitioner'] as const;
+const docLang = entry.data.lang;
+const langLabel = docLang === 'id' ? 'ID' : 'EN';
+const isAutomationProject = section === 'projects' && entry.id === 'automated-reporting';
 ---
 
 <BaseLayout
@@ -64,10 +67,13 @@ const bylineRoles = ['Data Engineer', 'Metocean Practitioner'] as const;
   })}
 >
   <div class="site-shell doc-layout">
-    <article class="doc-content">
+    <article class="doc-content" lang={docLang}>
       <h1 class="doc-title">{entry.data.title}</h1>
       <div class="post-meta">
         <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+        <span class="lang-badge" title={docLang === 'id' ? 'Bahasa Indonesia' : 'English'}
+          >{langLabel}</span
+        >
         {
           entry.data.categories.length > 0 && (
             <span>{entry.data.categories.join(' · ')}</span>
@@ -99,6 +105,34 @@ const bylineRoles = ['Data Engineer', 'Metocean Practitioner'] as const;
       <div class="prose">
         <Content />
       </div>
+
+      <aside class="doc-cta" aria-label="Next steps">
+        {
+          isAutomationProject ? (
+            <>
+              <p class="doc-cta__lede">
+                Need a similar weekly brief for your team? Selective freelance automation from
+                production DE experience.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn--primary" href="/services">Freelance automation</a>
+                <a class="btn btn--ghost" href={`mailto:${site.email}`}>Contact</a>
+              </div>
+            </>
+          ) : (
+            <>
+              <p class="doc-cta__lede">
+                More about my work as a Metocean Data Engineer, backend developer, and automation
+                practitioner.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn--primary" href="/resume">View resume</a>
+                <a class="btn btn--ghost" href={`mailto:${site.email}`}>Contact</a>
+              </div>
+            </>
+          )
+        }
+      </aside>
 
       <Comments
         pageUrl={new URL(pagePath, site.url).href}
