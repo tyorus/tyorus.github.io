@@ -1,6 +1,6 @@
 ---
 title: "InaWaves / WW3 Performance Benchmark on BMKG DRC"
-description: "Benchmark WAVEWATCH III (InaWaves) di Disaster Recovery Center BMKG Bali: opsi MPI/OMPG/OMPH, konfigurasi resource optimal, dan perbandingan dengan legacy supercomputer."
+description: "Benchmark performa WAVEWATCH III / InaWaves di DRC BMKG Bali: MPI/OMPG/OMPH, resource optimal, dan bandingkan dengan legacy HPC."
 pubDate: "2026-08-02"
 tags: ["WW3", "InaWaves", "HPC", "benchmark", "ocean", "BMKG"]
 categories: ["Ocean modelling"]

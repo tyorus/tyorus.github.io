@@ -1,6 +1,6 @@
 ---
 title: "Budget Air Atmosfer"
-description: ""
+description: "Persamaan atmospheric water budget di koordinat tekanan: adveksi, divergensi moisture flux, dan kaitannya dengan moisture flux divergence (MFD)."
 pubDate: "2022-10-24 10:00:00"
 tags: ["met","physical meteorology"]
 categories: ["Meteorology & Climatology"]

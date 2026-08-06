@@ -1,6 +1,6 @@
 ---
 title: "Estimating Upwelling from Surface Wind using Python"
-description: ""
+description: "Estimate coastal upwelling from surface wind in Python using wind stress, curl, and Ekman pumping velocity on gridded metocean / oceanography data."
 pubDate: "2024-10-10 14:00:00"
 tags: ["model","ocean"]
 categories: ["Oceanography","Modelling"]

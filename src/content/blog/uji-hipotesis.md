@@ -1,6 +1,6 @@
 ---
 title: "Uji Hipotesis Statistik: Penerapannya dalam Meteorologi/Klimatologi"
-description: ""
+description: "Uji hipotesis statistik untuk meteorologi dan klimatologi: hipotesis nol, tingkat signifikansi, dan penerapan pada data cuaca/iklim."
 pubDate: "2022-11-28 07:00:00"
 tags: ["met","stat"]
 categories: ["Meteorology & Climatology","Statistics"]

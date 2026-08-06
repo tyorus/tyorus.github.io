@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { services } from '../data/services';
+---
+
+<BaseLayout
+  fullTitle={`Services — ${site.name} · ${site.title}`}
+  description={`Automation services by ${site.name}, Metocean Data Engineer — operational intelligence briefs, data workflows, and reporting systems for agencies and ops teams.`}
+>
+  <section class="site-shell page-hero">
+    <h1>Services</h1>
+    <p style="margin: 0 0 0.5rem; color: var(--ink-muted); font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase;">
+      {services.headline}
+    </p>
+    <p>{services.lede}</p>
+    <div class="cta-row" style="margin-top: 1.5rem;">
+      <a class="btn btn--primary" href={`mailto:${site.email}?subject=Workflow%20Automation%20Audit`}>Book an audit</a>
+      <a class="btn btn--ghost" href="/projects">See projects</a>
+      <a class="btn btn--ghost" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="site-shell resume-grid">
+    <div class="resume-block">
+      <h2>Problems I solve</h2>
+      <ul class="focus-list">
+        {services.problems.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+
+    <div class="resume-block">
+      <h2>Packages</h2>
+      {
+        services.packages.map((pkg) => (
+          <article class="job">
+            <div class="job__meta">
+              <p class="job__role">{pkg.name}</p>
+              <p class="job__company">{pkg.fee}</p>
+            </div>
+            <p style="margin: 0 0 0.5rem; color: var(--ink-muted);">{pkg.summary}</p>
+            <p style="margin: 0; font-size: 0.92rem;">{pkg.ideal}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="resume-block">
+      <h2>Proof of work</h2>
+      <ul class="focus-list">
+        {services.proof.map((item) => <li>{item}</li>)}
+      </ul>
+      <div class="cta-row" style="margin-top: 1.25rem;">
+        <a class="btn btn--ghost" href="/projects/automated-reporting">Automated reporting demo</a>
+        <a class="btn btn--ghost" href="/projects">All projects</a>
+      </div>
+    </div>
+
+    <div class="resume-block">
+      <h2>Next step</h2>
+      <p>{services.cta}</p>
+      <div class="cta-row" style="margin-top: 1.25rem;">
+        <a class="btn btn--primary" href={`mailto:${site.email}`}>Email {site.email}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

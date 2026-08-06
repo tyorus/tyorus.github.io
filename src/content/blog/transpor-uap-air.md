@@ -1,6 +1,6 @@
 ---
 title: "Transpor Uap Air"
-description: ""
+description: "Transpor uap air (vertically integrated moisture flux / VIMF): konsep meteorologi dan implementasi perhitungan di NCL."
 pubDate: "2022-10-17 09:00:00"
 tags: ["met","physical meteorology"]
 categories: ["Meteorology & Climatology"]

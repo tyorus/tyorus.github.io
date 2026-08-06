@@ -5,9 +5,9 @@ export const site = {
   roles: ['Data Engineer', 'Backend Developer', 'Metocean Practitioner'] as const,
   role: 'Data Engineer · Backend Developer · Metocean Practitioner',
   tagline:
-    'Building data systems, backend services, and workflow automation.',
+    'Metocean data engineer building operational data systems, backend services, and practical workflow automation.',
   description:
-    'Personal site of Suwignyo Prasetyo — Data Engineer, Backend Developer, and Metocean Practitioner. Resume, projects, tutorials, and technical writing.',
+    'Personal site of Suwignyo Prasetyo (Tyolabs) — Metocean Data Engineer, Backend Developer, and Metocean Practitioner. Resume, projects, tutorials, and selective automation services.',
   url: 'https://tyolabs.github.io',
   email: 'tyo.suwignyo@gmail.com',
   location: 'Jakarta, Indonesia',

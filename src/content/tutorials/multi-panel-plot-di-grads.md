@@ -1,6 +1,6 @@
 ---
 title: "Looping untuk Plotting Multi Panel di GrADS"
-description: ""
+description: "Tutorial multi-panel plot di GrADS: set parea vs set vpage, looping layout, dan tips colorbar untuk visualisasi meteorologi."
 pubDate: "2022-11-14 07:00:00"
 tags: ["met","data visualization"]
 categories: ["Meteorology & Climatology"]

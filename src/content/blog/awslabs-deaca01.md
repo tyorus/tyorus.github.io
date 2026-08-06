@@ -1,6 +1,6 @@
 ---
 title: "AWS Data Engineering (DEA-C01) Labs Summary & Review Guide"
-description: ""
+description: "Panduan review AWS Certified Data Engineer – Associate (DEA-C01): lab S3 lifecycle, pipeline data, batasan emulator Floci, dan cheat sheet AWS CLI."
 pubDate: "2026-05-31 15:15:00"
 tags: ["data-engineering-analytics"]
 categories: ["Data Engineering and Analytics"]

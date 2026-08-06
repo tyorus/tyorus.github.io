@@ -1,6 +1,6 @@
 ---
 title: "Cold Surge dan Cross Equatorial Northerly Surge"
-description: ""
+description: "Cold surge dan cross-equatorial northerly surge (CENS) di Monsun Asia: mekanisme, indikator BMKG, dan dampak hujan di Benua Maritim Indonesia."
 pubDate: "2022-11-21 07:00:00"
 tags: ["met","monsoon","cold surge"]
 categories: ["Meteorology & Climatology"]

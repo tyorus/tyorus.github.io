@@ -15,10 +15,10 @@ export type Education = {
 
 export const resume = {
   summary:
-    'I design data pipelines and backend services for operational systems, and apply them to marine weather and ocean forecasting.',
+    'I design data pipelines and backend services for operational systems, with a focus on marine weather and ocean forecasting — and apply the same reliability mindset to practical reporting and workflow automation.',
   focus: [
     'Data engineering: pipelines, QC, orchestration, and cloud-native geospatial data (Python, Prefect, Zarr, S3)',
-    'Backend & platform: Linux, docker, automation, SLURM/HPC jobs, and operational production environments',
+    'Backend & platform: Linux, Docker, automation, SLURM/HPC jobs, and operational production environments',
     'Metocean practice: WAVEWATCH III & SWAN, hindcast analysis, model verification, bias correction, and real-time forecasting systems',
   ],
   skills: {

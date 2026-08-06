@@ -1,6 +1,6 @@
 ---
 title: "Install WaveWatch3 versi 7.14"
-description: ""
+description: "Tutorial instalasi WAVEWATCH III (WW3) 7.14 dengan cmake: requirements, clone, compiler, dan troubleshooting build model gelombang."
 pubDate: "2024-09-14 07:00:00"
 tags: ["model","ocean"]
 categories: ["Oceanography","Modelling"]

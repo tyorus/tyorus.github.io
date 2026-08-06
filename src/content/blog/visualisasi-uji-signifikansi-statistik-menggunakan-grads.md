@@ -1,6 +1,6 @@
 ---
 title: "Visualisasi Uji Signifikansi Statistik Menggunakan GrADS"
-description: ""
+description: "Visualisasi uji signifikansi statistik di GrADS: script untuk medan spasial meteorologi, termasuk transpor uap air."
 pubDate: "2022-12-5 07:00:00"
 tags: ["met","stat","data visualization"]
 categories: ["Meteorology & Climatology","Statistics"]

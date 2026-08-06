@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { site } from '../../data/site';
 
 const posts = (await getCollection('projects')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,7 +18,7 @@ function formatDate(date: Date) {
 
 <BaseLayout
   title="Projects"
-  description="Selected projects across MetOcean modelling, data systems, and experiments."
+  description={`Selected projects by ${site.name} — MetOcean modelling, WAVEWATCH III, data systems, and automation experiments.`}
 >
   <section class="site-shell page-hero">
     <h1>Projects</h1>

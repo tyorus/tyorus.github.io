@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { site } from '../../data/site';
 
 const posts = (await getCollection('tutorials')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -17,7 +18,7 @@ function formatDate(date: Date) {
 
 <BaseLayout
   title="Tutorials"
-  description="How-to notes and practical guides — modelling, tools, and workflows."
+  description={`How-to notes by ${site.name} on wave modelling, GrADS, and metocean/data workflows.`}
 >
   <section class="site-shell page-hero">
     <h1>Tutorials</h1>

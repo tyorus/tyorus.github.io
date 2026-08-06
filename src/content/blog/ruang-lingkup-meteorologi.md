@@ -1,6 +1,6 @@
 ---
 title: "Ruang Lingkup Meteorologi"
-description: ""
+description: "Ruang lingkup meteorologi: fisika atmosfer, dinamika cuaca, klimatologi, dan prediksi — pengantar cabang ilmu atmosfer."
 pubDate: "2022-10-10 11:40:00"
 tags: ["met"]
 categories: ["Meteorology & Climatology"]

@@ -1,6 +1,6 @@
 ---
 title: "Why does Convection Weaken over Sumatra Island in an Active Phase of the MJO?"
-description: ""
+description: "Mengapa konveksi diurnal melemah di Sumatra saat MJO aktif? Catatan pre-YMC, observasi, dan simulasi numerik Benua Maritim."
 pubDate: "2022-11-7 19:00:00"
 tags: ["met","physical meteorology","convection","MJO"]
 categories: ["Meteorology & Climatology"]

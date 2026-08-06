@@ -1,12 +1,21 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import { absoluteUrl, jsonLd } from '../lib/schema';
 
 interface Props {
   title?: string;
   description?: string;
   math?: boolean;
   home?: boolean;
+  image?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  /** Full document title override (skips default `{title} · Tyolabs` template). */
+  fullTitle?: string;
+  /** JSON-LD object(s) to embed as application/ld+json. */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -14,11 +23,20 @@ const {
   description = site.description,
   math = false,
   home = false,
+  image = site.avatar,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  fullTitle,
+  schema,
 } = Astro.props;
 
-const pageTitle = title ? `${title} · ${site.title}` : `${site.title} — ${site.name}`;
+const pageTitle =
+  fullTitle ?? (title ? `${title} · ${site.title}` : `${site.title} — ${site.name}`);
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const path = Astro.url.pathname;
+const ogImage = absoluteUrl(image);
+const schemaBlocks = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
@@ -40,17 +58,37 @@ const path = Astro.url.pathname;
     </script>
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.title} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    {
+      publishedTime && (
+        <meta property="article:published_time" content={publishedTime.toISOString()} />
+      )
+    }
+    {
+      modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+      )
+    }
+    {ogType === 'article' && <meta property="article:author" content={site.name} />}
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
+    {
+      schemaBlocks.map((block) => (
+        <script type="application/ld+json" set:html={jsonLd(block)} />
+      ))
+    }
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -95,6 +133,9 @@ const path = Astro.url.pathname;
             >
             <a href="/projects" aria-current={path.startsWith('/projects') ? 'page' : undefined}
               >Projects</a
+            >
+            <a href="/services" aria-current={path.startsWith('/services') ? 'page' : undefined}
+              >Services</a
             >
             <a href="/tutorials" aria-current={path.startsWith('/tutorials') ? 'page' : undefined}
               >Tutorials</a
@@ -148,16 +189,21 @@ const path = Astro.url.pathname;
             style="--i: 2">Projects</a
           >
           <a
+            href="/services"
+            aria-current={path.startsWith('/services') ? 'page' : undefined}
+            style="--i: 3">Services</a
+          >
+          <a
             href="/tutorials"
             aria-current={path.startsWith('/tutorials') ? 'page' : undefined}
-            style="--i: 3">Tutorials</a
+            style="--i: 4">Tutorials</a
           >
           <a
             href="/blog"
             aria-current={path.startsWith('/blog') ? 'page' : undefined}
-            style="--i: 4">Blog</a
+            style="--i: 5">Blog</a
           >
-          <a href={`mailto:${site.email}`} style="--i: 5">Contact</a>
+          <a href={`mailto:${site.email}`} style="--i: 6">Contact</a>
         </div>
         <div class="nav__footer">
           <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>

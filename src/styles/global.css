@@ -715,11 +715,27 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
+  margin: 0 0 0.35rem;
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+}
+
+.post-byline {
   margin: 0 0 1.75rem;
   padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--line);
   color: var(--ink-muted);
   font-size: 0.875rem;
+}
+
+.post-byline a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-byline a:hover {
+  color: var(--ink);
 }
 
 .doc-back {

@@ -2,11 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 import { resume } from '../data/resume';
+import { absoluteUrl, profilePageSchema } from '../lib/schema';
 ---
 
 <BaseLayout
-  title="Resume"
-  description={`Resume of ${site.name} — ${site.role}. Experience, skills, and education.`}
+  fullTitle={`${site.name} — Resume · ${site.title}`}
+  description={`Resume of ${site.name} — Metocean Data Engineer, Backend Developer, and Metocean Practitioner. Experience, skills, and education.`}
+  ogType="profile"
+  schema={profilePageSchema(absoluteUrl('/resume/'))}
 >
   <section class="site-shell page-hero">
     <h1>{site.name}</h1>
@@ -19,6 +22,8 @@ import { resume } from '../data/resume';
     <p>{resume.summary}</p>
     <div class="cta-row" style="margin-top: 1.5rem;">
       <a class="btn btn--primary" href={`mailto:${site.email}`}>Contact me</a>
+      <a class="btn btn--ghost" href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn btn--ghost" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </section>
 

@@ -1,6 +1,6 @@
 ---
 title: "Moisture Flux Divergence"
-description: ""
+description: "Moisture flux divergence (MFD) dan VIMFD: definisi, satuan, dan peranannya dalam analisis uap air / physical meteorology."
 pubDate: "2022-10-31 07:00:00"
 tags: ["met","physical meteorology"]
 categories: ["Meteorology & Climatology"]

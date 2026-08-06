@@ -48,6 +48,15 @@ math: false
 - `/blog` · `/blog/<slug>`
 - `/posts/<slug>` — legacy redirects
 
+## SEO / Google Search Console
+
+After deploy:
+
+1. Confirm the Search Console property for `https://tyolabs.github.io`.
+2. Submit the sitemap: `https://tyolabs.github.io/sitemap-index.xml`.
+3. Request indexing for `/`, `/resume`, and `/services`.
+4. Keep LinkedIn and GitHub profile name/headline aligned with site roles (Metocean Data Engineer / Data Engineer) so `sameAs` entity signals stay consistent.
+
 ## License
 
 [MIT](LICENSE) © 2026 Suwignyo Prasetyo
