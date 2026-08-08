@@ -1,8 +1,8 @@
-# Tyolabs
+# Tyorus
 
 Personal site of **Suwignyo Prasetyo** — CV-first homepage with projects, tutorials, and a blog.
 
-Built with [Astro](https://astro.build). Deployed to GitHub Pages.
+Built with [Astro](https://astro.build). Live at [tyorus.com](https://tyorus.com) (GitHub Pages).
 
 ## Develop
 
@@ -36,6 +36,7 @@ pubDate: 2026-08-02
 tags: []
 categories: []
 math: false
+lang: en
 ---
 ```
 
@@ -46,16 +47,22 @@ math: false
 - `/projects` · `/projects/<slug>`
 - `/tutorials` · `/tutorials/<slug>`
 - `/blog` · `/blog/<slug>`
+- `/services` — freelance automation
 - `/posts/<slug>` — legacy redirects
+
+## Custom domain
+
+`public/CNAME` → `tyorus.com`. In the domain registrar, point DNS to GitHub Pages (A/`A`/`AAAA` or CNAME per [GitHub docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)). In the repo **Settings → Pages**, set custom domain `tyorus.com` and enable HTTPS.
 
 ## SEO / Google Search Console
 
-After deploy:
+After the custom domain is live:
 
-1. Confirm the Search Console property for `https://tyolabs.github.io`.
-2. Submit the sitemap: `https://tyolabs.github.io/sitemap-index.xml`.
+1. Add a **URL prefix** property for `https://tyorus.com` and verify (HTML file or DNS TXT on tyorus.com).
+2. Submit sitemap: `https://tyorus.com/sitemap-index.xml`.
 3. Request indexing for `/`, `/resume`, and `/services`.
-4. Keep LinkedIn and GitHub profile name/headline aligned with site roles (Metocean Data Engineer / Data Engineer) so `sameAs` entity signals stay consistent.
+4. Optionally set a redirect/canonical from `tyolabs.github.io` (GitHub Pages does this when the custom domain is configured).
+5. Keep LinkedIn / GitHub display aligned with **Tyorus** + roles (Metocean Data Engineer / Data Engineer).
 
 ## License
 

@@ -7,7 +7,7 @@ import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tyolabs.github.io',
+  site: 'https://tyorus.com',
   integrations: [sitemap()],
   markdown: {
     processor: unified({

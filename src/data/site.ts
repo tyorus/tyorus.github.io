@@ -1,5 +1,5 @@
 export const site = {
-  title: 'Tyolabs',
+  title: 'Tyorus',
   name: 'Suwignyo Prasetyo',
   shortName: 'Tyo',
   roles: ['Data Engineer', 'Backend Developer', 'Metocean Practitioner'] as const,
@@ -7,10 +7,10 @@ export const site = {
   tagline:
     'Metocean data engineer building operational data systems, backend services, and workflow automation for production environments.',
   description:
-    'Personal site of Suwignyo Prasetyo (Tyolabs) — Metocean Data Engineer, Backend Developer, and Metocean Practitioner. Resume, projects, tutorials, and selective freelance automation.',
+    'Personal site of Suwignyo Prasetyo (Tyorus) — Metocean Data Engineer, Backend Developer, and Metocean Practitioner. Resume, projects, tutorials, and selective freelance automation.',
   bridge:
     'The same production discipline from metocean ops pipelines also powers selective freelance automation for agencies and ops teams.',
-  url: 'https://tyolabs.github.io',
+  url: 'https://tyorus.com',
   email: 'tyo.suwignyo@gmail.com',
   location: 'Jakarta, Indonesia',
   avatar: '/img/profile.jpg',

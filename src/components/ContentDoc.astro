@@ -30,7 +30,7 @@ const showToc = tocHeadings.length > 1;
 const pagePath = `/${section}/${entry.id}/`;
 const pageUrl = absoluteUrl(pagePath);
 const baseDescription = (entry.data.description || entry.data.title).trim();
-const brandSuffix = ` — ${site.name} · Tyolabs`;
+const brandSuffix = ` — ${site.name} · ${site.title}`;
 const description = baseDescription.includes(site.name)
   ? baseDescription
   : `${baseDescription}${brandSuffix}`;
@@ -38,7 +38,7 @@ const schemaType =
   section === 'tutorials' ? 'TechArticle' : section === 'projects' ? 'Article' : 'BlogPosting';
 const keywords = [
   site.name,
-  'Tyolabs',
+  site.title,
   ...site.roles,
   ...entry.data.tags,
   ...entry.data.categories,
