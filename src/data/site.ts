@@ -15,7 +15,7 @@ export const site = {
   location: 'Jakarta, Indonesia',
   avatar: '/img/profile.jpg',
   links: {
-    github: 'https://github.com/tyolabs',
+    github: 'https://github.com/tyorus',
     linkedin: 'https://www.linkedin.com/in/tyo-suwignyo/',
     email: 'mailto:tyo.suwignyo@gmail.com',
   },

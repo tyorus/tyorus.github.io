@@ -53,7 +53,7 @@ Uji statistik dilakukan untuk menghasilkan nilai p-value yang nantinya digunakan
 
 Area lingkup probabilitas dibatasi berdasarkan dua jenis, satu sisi dan dua sisi. Apabila satu sisi, maka level kritis sama dengan level signifikan. Sementara, apabila dua sisi, maka level kritis bernilai positif dan negartif level signifikan per dua ($ \pm \frac{\alpha}{2} $)[^3].
 
-![Level signifikan](https://raw.githubusercontent.com/tyolabs/tyolabs.github.io/a9b87a086ce96e89ad52dad97de11abf22340206/img/posts/stat_siglevel.png)
+![Level signifikan](https://raw.githubusercontent.com/tyorus/tyorus.github.io/a9b87a086ce96e89ad52dad97de11abf22340206/img/posts/stat_siglevel.png)
 <p style="text-align: center; font-size: 14px">Level signifikan.</p>
 
 ### 5. Interpretasi hasil

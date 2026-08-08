@@ -61,7 +61,7 @@ After the custom domain is live:
 1. Add a **URL prefix** property for `https://tyorus.com` and verify (HTML file or DNS TXT on tyorus.com).
 2. Submit sitemap: `https://tyorus.com/sitemap-index.xml`.
 3. Request indexing for `/`, `/resume`, and `/services`.
-4. Optionally set a redirect/canonical from `tyolabs.github.io` (GitHub Pages does this when the custom domain is configured).
+4. Optionally keep `tyorus.github.io` as the GitHub Pages host; custom domain `tyorus.com` is the public URL.
 5. Keep LinkedIn / GitHub display aligned with **Tyorus** + roles (Metocean Data Engineer / Data Engineer).
 
 ## License

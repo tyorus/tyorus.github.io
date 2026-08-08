@@ -114,7 +114,7 @@ class uwPlotter(plotter):
 
 The script above is a part of the production script to generate upwelling maps that can be seen through this link [https://maritim.bmkg.go.id/ofs-static](https://maritim.bmkg.go.id/ofs-static), select Model: Ina-flow and Parameter: Upwelling.
 
-![Sample of upwelling plot](https://raw.githubusercontent.com/tyolabs/tyolabs.github.io/refs/heads/main/img/posts/upwelling_indonesia.png)
+![Sample of upwelling plot](https://raw.githubusercontent.com/tyorus/tyorus.github.io/refs/heads/main/img/posts/upwelling_indonesia.png)
 *Sample of Upwelling maps*
 
 # References
