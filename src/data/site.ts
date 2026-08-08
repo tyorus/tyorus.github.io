@@ -7,7 +7,7 @@ export const site = {
   tagline:
     'Metocean data engineer building operational data systems, backend services, and workflow automation for production environments.',
   description:
-    'Personal site of Suwignyo Prasetyo (Tyorus) — Metocean Data Engineer, Backend Developer, and Metocean Practitioner. Resume, projects, tutorials, and selective freelance automation.',
+    'Suwignyo Prasetyo (Tyorus) — Metocean Data Engineer, Backend Developer, and Metocean Practitioner in Jakarta. Resume, projects, tutorials, and selective freelance automation at tyorus.com.',
   bridge:
     'The same production discipline from metocean ops pipelines also powers selective freelance automation for agencies and ops teams.',
   url: 'https://tyorus.com',

@@ -56,13 +56,14 @@ lang: en
 
 ## SEO / Google Search Console
 
-After the custom domain is live:
+`tyorus.com` is the canonical host. Prefer verifying the **Domain** property (DNS TXT) — you own the DNS now.
 
-1. Add a **URL prefix** property for `https://tyorus.com` and verify (HTML file or DNS TXT on tyorus.com).
-2. Submit sitemap: `https://tyorus.com/sitemap-index.xml`.
-3. Request indexing for `/`, `/resume`, and `/services`.
-4. Optionally keep `tyorus.github.io` as the GitHub Pages host; custom domain `tyorus.com` is the public URL.
-5. Keep LinkedIn / GitHub display aligned with **Tyorus** + roles (Metocean Data Engineer / Data Engineer).
+1. Search Console → Add property → **Domain** → `tyorus.com` → add the TXT record at your registrar → Verify.
+2. (Or URL prefix `https://tyorus.com` + HTML file upload to `public/`.)
+3. Submit sitemap: `https://tyorus.com/sitemap-index.xml` (also try `sitemap-0.xml` if the index fails to fetch).
+4. URL Inspection → Request indexing for `/`, `/resume/`, `/services/`.
+5. Fix **www**: add a `www` CNAME → `tyorus.github.io` in DNS so HTTPS/redirect to apex works (avoid split `www` vs non-www indexing).
+6. LinkedIn + GitHub bio → `https://tyorus.com`; headline aligned with Metocean Data Engineer / Data Engineer.
 
 ## License
 
