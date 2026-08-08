@@ -140,9 +140,6 @@ const schemaBlocks = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
             <a href="/services" aria-current={path.startsWith('/services') ? 'page' : undefined}
               >Services</a
             >
-            <a href="/tutorials" aria-current={path.startsWith('/tutorials') ? 'page' : undefined}
-              >Tutorials</a
-            >
             <a href="/blog" aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a>
             <a href={`mailto:${site.email}`}>Contact</a>
           </div>
@@ -197,16 +194,11 @@ const schemaBlocks = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
             style="--i: 3">Services</a
           >
           <a
-            href="/tutorials"
-            aria-current={path.startsWith('/tutorials') ? 'page' : undefined}
-            style="--i: 4">Tutorials</a
-          >
-          <a
             href="/blog"
             aria-current={path.startsWith('/blog') ? 'page' : undefined}
-            style="--i: 5">Blog</a
+            style="--i: 4">Blog</a
           >
-          <a href={`mailto:${site.email}`} style="--i: 6">Contact</a>
+          <a href={`mailto:${site.email}`} style="--i: 5">Contact</a>
         </div>
         <div class="nav__footer">
           <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>

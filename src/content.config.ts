@@ -26,15 +26,6 @@ const blog = defineCollection({
   schema: postSchema,
 });
 
-const tutorials = defineCollection({
-  loader: glob({
-    pattern: '**/*.md',
-    base: './src/content/tutorials',
-    deferRender: true,
-  }),
-  schema: postSchema,
-});
-
 const projects = defineCollection({
   loader: glob({
     pattern: '**/*.md',
@@ -44,4 +35,4 @@ const projects = defineCollection({
   schema: postSchema,
 });
 
-export const collections = { blog, tutorials, projects };
+export const collections = { blog, projects };

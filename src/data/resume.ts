@@ -15,37 +15,16 @@ export type Education = {
 
 export const resume = {
   summary:
-    'I design data pipelines and backend services for operational systems, with a focus on marine weather and ocean forecasting — and apply the same reliability mindset to practical reporting and workflow automation.',
+    'Data Engineer and Backend Developer building reliable production data pipelines, workflow orchestration, and operational systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC environments, with domain expertise in geospatial and metocean data.',
   focus: [
-    'Data engineering: pipelines, QC, orchestration, and cloud-native geospatial data (Python, Prefect, Zarr, S3)',
-    'Backend & platform: Linux, Docker, automation, SLURM/HPC jobs, and operational production environments',
-    'Metocean practice: WAVEWATCH III & SWAN, hindcast analysis, model verification, bias correction, and real-time forecasting systems',
+    'Production Data engineering: ingestion, transformation, QC, orchestration, and delivery of operational datasets',
+    'Backend & Workflow Automation: Python, Prefect, Linux, Docker, S3-compatible storage, Zarr, and HPC workflows',
+    'Geospatial and metocean systems: numerical model data, forecast production, model verification, and large-scale scientific datasets',
   ],
   skills: {
-    'Data Engineering': [
-      'Python',
-      'ETL / data pipelines',
-      'Prefect',
-      'Xarray / Zarr',
-      'Data QC',
-      'Time-series analysis',
-    ],
-    Backend: [
-      'Linux / Bash',
-      'Workflow automation',
-      'SLURM / HPC',
-      'AWS / S3',
-      'Operational services',
-      'API & data dissemination',
-    ],
-    MetOcean: [
-      'WAVEWATCH III',
-      'SWAN',
-      'Hindcast analysis',
-      'Model verification',
-      'NWP',
-      'Marine forecasting',
-    ],
+    'Data Engineering': [ 'Python', 'ETL / ELT pipelines', 'Prefect', 'Xarray', 'Zarr', 'NetCDF', 'Data quality & validation', 'Time-series processing', ],
+    'Platform & Backend': [ 'Linux', 'Docker', 'AWS', 'Object storage', 'Workflow orchestration', 'SLURM HPC', 'API & data dissemination', 'Production automation', ],
+    'Geospatial & MetOcean': [ 'WAVEWATCH III', 'SWAN', 'Numerical weather prediction', 'Hindcast analysis', 'Model verification', 'Marine forecasting', 'Geospatial data processing', ],
   },
   experience: [
     {
@@ -53,10 +32,13 @@ export const resume = {
       role: 'Metocean Data Engineer',
       period: 'Sep 2023 – Present',
       location: 'Jakarta, Indonesia · Hybrid',
-      highlights: [
-        'Maintain and support the operational production environment of BMKG-OFS (BMKG Ocean Forecasting System), including INACAWO, INAWAVES, and INAFLOWS model workflows for real-time forecasting.',
-        'Build and operate metocean data pipelines, QC, and automation for operational marine services.',
-        'Contribute as Big Data & AI / Metocean Data Engineer on Marine Meteorology System (MMS) initiatives.',
+      highlights: [ 
+        'Engineer and operate production data pipelines supporting BMKG ocean forecasting systems, including atmospheric, wave, and ocean-model workflows used for real-time marine forecasting.', 
+        'Build automated ingestion, validation, transformation, post-processing, and dissemination workflows for large numerical and geospatial datasets using Python, Prefect, Linux, and HPC infrastructure.', 
+        'Operate and improve production workflows for INACAWO, INAWAVES, and INAFLOWS across numerical weather, wave, and ocean circulation models.', 
+        'Develop workflow orchestration and automation across distributed environments using Prefect, Docker, SLURM, object storage', 
+        'Optimize scientific computing workloads and model post-processing pipelines, including HPC benchmarking, parallel execution, and production reliability improvements.', 
+        'Contribute to Marine Meteorology System (MMS) initiatives as a Big Data & AI Engineer, supporting data architecture, operational services, and marine data dissemination.', 
       ],
     },
     {
@@ -64,9 +46,10 @@ export const resume = {
       role: 'Marine Meteorologist',
       period: 'Feb 2023 – Sep 2023',
       location: 'Jakarta, Indonesia · On-site',
-      highlights: [
-        'Forecasted critical metocean parameters, including wind, waves, tides, and severe weather conditions.',
-        'Analyzed observational and numerical weather prediction (NWP) data for model verification and operational guidance.',
+      highlights: [ 
+        'Produced operational marine forecasts covering wind, waves, tides, currents, and severe weather conditions for Indonesian waters.', 
+        'Analyzed observational, satellite, and numerical weather prediction data to evaluate forecast conditions and support operational decision-making.', 
+        'Performed model verification and interpreted meteorological and oceanographic datasets for marine forecast guidance.', 
       ],
     },
     {
@@ -74,7 +57,9 @@ export const resume = {
       role: 'Career break',
       period: 'Sep 2022 – Dec 2022',
       location: 'Purworejo Regency, Central Java, Indonesia',
-      highlights: ['Community-focused voluntary work during a short career break after graduation.'],
+      highlights: [
+        'Voluntary work during a short career break after graduation.'
+      ],
     },
   ] satisfies Experience[],
   education: [

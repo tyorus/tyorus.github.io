@@ -5,13 +5,13 @@ import { site } from '../data/site';
 import { absoluteUrl, articleSchema } from '../lib/schema';
 import type { CollectionEntry } from 'astro:content';
 
-type Entry = CollectionEntry<'blog'> | CollectionEntry<'tutorials'> | CollectionEntry<'projects'>;
+type Entry = CollectionEntry<'blog'> | CollectionEntry<'projects'>;
 
 interface Props {
   entry: Entry;
   Content: any;
   headings: { depth: number; slug: string; text: string }[];
-  section: 'blog' | 'tutorials' | 'projects';
+  section: 'blog' | 'projects';
   sectionLabel: string;
 }
 
@@ -34,8 +34,7 @@ const brandSuffix = ` — ${site.name} · ${site.title}`;
 const description = baseDescription.includes(site.name)
   ? baseDescription
   : `${baseDescription}${brandSuffix}`;
-const schemaType =
-  section === 'tutorials' ? 'TechArticle' : section === 'projects' ? 'Article' : 'BlogPosting';
+const schemaType = section === 'projects' ? 'Article' : 'BlogPosting';
 const keywords = [
   site.name,
   site.title,

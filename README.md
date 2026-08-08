@@ -1,6 +1,6 @@
 # Tyorus
 
-Personal site of **Suwignyo Prasetyo** — CV-first homepage with projects, tutorials, and a blog.
+Personal site of **Suwignyo Prasetyo** — CV-first homepage with projects and a blog.
 
 Built with [Astro](https://astro.build). Live at [tyorus.com](https://tyorus.com) (GitHub Pages).
 
@@ -23,8 +23,12 @@ npm run preview
 - Resume data: `src/data/resume.ts`
 - Site meta / links: `src/data/site.ts`
 - Blog: `src/content/blog/*.md`
-- Tutorials: `src/content/tutorials/*.md`
 - Projects: `src/content/projects/*.md`
+- Downloadable resume (Typst): `cv/resume.typ` → `public/files/suwignyo-prasetyo-resume.pdf`
+
+```bash
+typst compile cv/resume.typ public/files/suwignyo-prasetyo-resume.pdf
+```
 
 New entry — same front matter in any of those folders:
 
@@ -45,10 +49,9 @@ lang: en
 - `/` — home (CV welcome)
 - `/resume` — resume
 - `/projects` · `/projects/<slug>`
-- `/tutorials` · `/tutorials/<slug>`
 - `/blog` · `/blog/<slug>`
 - `/services` — freelance automation
-- `/posts/<slug>` — legacy redirects
+- `/posts/<slug>` · `/tutorials/<slug>` — legacy redirects → blog
 
 ## Custom domain
 

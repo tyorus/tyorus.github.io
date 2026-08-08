@@ -21,9 +21,12 @@ import { absoluteUrl, profilePageSchema } from '../lib/schema';
     </p>
     <p>{resume.summary}</p>
     <div class="cta-row" style="margin-top: 1.5rem;">
-      <a class="btn btn--primary" href={`mailto:${site.email}`}>Contact me</a>
-      <a class="btn btn--ghost" href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn btn--primary" href={site.resumePdf} download="suwignyo-prasetyo-resume.pdf"
+        >Download PDF</a
+      >
       <a class="btn btn--ghost" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn btn--ghost" href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn btn--ghost" href={`mailto:${site.email}`}>Contact me (tyo.suwignyo@gmail.com)</a>
     </div>
   </section>
 

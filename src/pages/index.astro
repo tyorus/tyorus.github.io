@@ -16,9 +16,11 @@ import { homeGraphSchema } from '../lib/schema';
     </ul>
     <p class="hero__bridge">{site.bridge}</p>
     <div class="cta-row">
-      <a class="btn btn--primary" href="/resume">View resume</a>
-      <a class="btn btn--ghost" href="/projects">Projects</a>
-      <a class="btn btn--ghost" href="/services">Freelance automation</a>
+      <a class="btn btn--primary" href={site.resumePdf} download="suwignyo-prasetyo-resume.pdf"
+        >Download Resume</a
+      >
+      <a class="btn btn--ghost" href="/projects">View Engineering Work</a>
+      <a class="btn btn--ghost" href="/services">Hire Me for Automation</a>
     </div>
   </section>
 </BaseLayout>
