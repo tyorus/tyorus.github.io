@@ -56,7 +56,7 @@
   #text(size: 17.5pt, weight: "bold", fill: accent)[Suwignyo Prasetyo]
   #v(0.06em)
   #text(size: 9.2pt, fill: muted)[
-    Data Engineer · Python Developer · Backend & Workflow Automation
+    Data Engineer · Python Backend Developer · Workflow Automation
   ]
   #v(0.14em)
   #text(size: 8.15pt, fill: muted)[
@@ -70,7 +70,7 @@
 ]
 
 #section("Summary")
-Data Engineer and Python Developer with 3+ years building data-intensive applications, automated workflows, and production systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC, with geospatial/metocean domain expertise — currently operating BMKG Ocean Forecasting System (BMKG-OFS) production workflows at the Centre for Marine Meteorology.
+Data Engineer and Python Backend Developer with 3+ years building data-intensive applications, automated workflows, and production systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC, with geospatial/metocean domain expertise — currently operating BMKG Ocean Forecasting System (BMKG-OFS) production workflows at the Centre for Marine Meteorology.
 
 #section("Experience")
 

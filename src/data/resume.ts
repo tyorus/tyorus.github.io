@@ -15,7 +15,7 @@ export type Education = {
 
 export const resume = {
   summary:
-    'Data Engineer and Python Developer with 3+ years of experience building data-intensive applications, automated workflows, and production systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC environments, with domain expertise in geospatial and metocean data.',
+    'Data Engineer and Python Backend Developer with 3+ years of experience building data-intensive applications, automated workflows, and production systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC environments, with domain expertise in geospatial and metocean data.',
   focus: [
     'Production Data engineering: ingestion, transformation, QC, orchestration, and delivery of operational datasets',
     'Backend & Workflow Automation: Python, Prefect, Linux, Docker, S3-compatible storage, Zarr, and HPC workflows',
