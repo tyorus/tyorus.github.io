@@ -56,7 +56,7 @@
   #text(size: 17.5pt, weight: "bold", fill: accent)[Suwignyo Prasetyo]
   #v(0.06em)
   #text(size: 9.2pt, fill: muted)[
-    Data Engineer · Backend Developer · Metocean Practitioner
+    Data Engineer · Python Developer · Backend & Workflow Automation
   ]
   #v(0.14em)
   #text(size: 8.15pt, fill: muted)[
@@ -70,7 +70,7 @@
 ]
 
 #section("Summary")
-Data Engineer and Backend Developer building reliable production data pipelines, workflow orchestration, and operational systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC, with geospatial/metocean domain expertise — currently operating BMKG Ocean Forecasting System (BMKG-OFS) production workflows at the Centre for Marine Meteorology.
+Data Engineer and Python Developer with 3+ years building data-intensive applications, automated workflows, and production systems. Experienced in Python, Prefect, Linux, Docker, object storage, and HPC, with geospatial/metocean domain expertise — currently operating BMKG Ocean Forecasting System (BMKG-OFS) production workflows at the Centre for Marine Meteorology.
 
 #section("Experience")
 
@@ -82,17 +82,22 @@ Data Engineer and Backend Developer building reliable production data pipelines,
 
 #v(0.16em)
 #dated([*Metocean Data Engineer*], [Sep 2023 – Present])
-#bullet[Operate production data pipelines for BMKG-OFS (INACAWO, INAWAVES, INAFLOWS) supporting real-time marine forecasting.]
-#bullet[Build ingestion, validation, transformation, post-processing, and dissemination workflows with Python, Prefect, Linux, Docker, and SLURM.]
-#bullet[Develop cloud-optimized climatological/hindcast archives with Zarr and S3-compatible storage (~25+ years, 3-hourly, ~388k grids).]
-#bullet[Design and benchmark WAVEWATCH III / SWAN backup forecasting on the HPC DRC, including SAT and MPI/OpenMP studies.]
-#bullet[Build Streamlit scientific apps for analysis/monitoring; contribute as Big Data & AI engineer on MMS modernization.]
-#bullet[Provide L2/L3 troubleshooting for forecasting systems, pipelines, and production services.]
+#bullet[Develop and maintain production pipelines and automated workflows with Python, Bash, Prefect, and SLURM (ingestion, processing, validation, monitoring, dissemination).]
+#bullet[Support operational forecasting systems with L2/L3 troubleshooting; process large-scale time-series/multidimensional data and QC missing, delayed, or invalid inputs.]
+#bullet[Build Python/Streamlit apps; develop cloud-optimized datasets with Xarray, Zarr, and S3-compatible storage.]
+#bullet[Benchmark compute-intensive workflows (INACAWO, INAWAVES, INAFLOWS); contribute to AI and Big Data modernization (MMS).]
 
-#v(0.12em)
-#dated([*Marine Meteorologist*], [Feb 2023 – Sep 2023])
-#bullet[Produced operational marine forecasts and verified observational/satellite/NWP data for maritime safety, fisheries, and offshore ops.]
-#bullet[Supported field campaigns (ADCP surveys, Jalacitra Expedition) and Fishermen Weather Field School capacity-building.]
+#v(0.1em)
+#dated([*Marine Meteorologist*], [Jan 2023 – Sep 2023])
+#bullet[Forecasted wind, waves, tides, and severe weather; verified observational/NWP data; briefed maritime, fisheries, and offshore users.]
+#bullet[Field work: ADCP surveys in Jakarta Bay, Jalacitra Expedition 2023, and Fishermen Weather Field School.]
+
+#v(0.14em)
+#dated(
+  [*Data Analyst* — Fastwork Technologies Indonesia · Freelance],
+  [Sep 2025 – Nov 2025],
+)
+#bullet[ECG time-series analysis with the Hilbert–Huang Transform; delivered the workflow to client requirements.]
 
 #section("Selected Projects")
 #bullet[*BMKG-OFS Analysis Platform* (2025) — Streamlit analysis/monitoring (#link("https://klimatologi.pusmar.id")[klimatologi.pusmar.id]).]

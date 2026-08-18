@@ -66,7 +66,7 @@ lang: en
 3. Submit sitemap: `https://tyorus.com/sitemap-index.xml` (also try `sitemap-0.xml` if the index fails to fetch).
 4. URL Inspection → Request indexing for `/`, `/resume/`, `/services/`.
 5. Fix **www**: add a `www` CNAME → `tyorus.github.io` in DNS so HTTPS/redirect to apex works (avoid split `www` vs non-www indexing).
-6. LinkedIn + GitHub bio → `https://tyorus.com`; headline aligned with Metocean Data Engineer / Data Engineer.
+6. LinkedIn + GitHub bio → `https://tyorus.com`; headline aligned with Data Engineer | Python Developer | Backend & Workflow Automation.
 
 ## License
 

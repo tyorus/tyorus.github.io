@@ -2,12 +2,12 @@ export const site = {
   title: 'Tyorus',
   name: 'Suwignyo Prasetyo',
   shortName: 'Tyo',
-  roles: ['Data Engineer', 'Backend Developer', 'Metocean Practitioner'] as const,
-  role: 'Data Engineer · Backend Developer · Metocean Practitioner',
+  roles: ['Data Engineer', 'Python Developer', 'Backend & Workflow Automation'] as const,
+  role: 'Data Engineer · Python Developer · Backend & Workflow Automation',
   tagline:
-    'Data engineer building reliable production pipelines, data platforms, and workflow automation.',
+    'Data engineer and Python developer building reliable production pipelines, data platforms, and workflow automation.',
   description:
-    'Suwignyo Prasetyo (Tyorus) — Data Engineer, Backend Developer, and Metocean Practitioner in Jakarta. Resume, projects, blog, and selective freelance automation at tyorus.com.',
+    'Suwignyo Prasetyo (Tyorus) — Data Engineer, Python Developer, and Backend & Workflow Automation in Jakarta. Resume, projects, blog, and selective freelance automation at tyorus.com.',
   bridge:
     'I apply the same production engineering discipline used in operational metocean systems to data platforms, backend workflows, and selective business automation.',
   url: 'https://tyorus.com',
