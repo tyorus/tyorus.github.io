@@ -17,9 +17,7 @@ lang: en
 
 I did not start my career thinking of myself as a data engineer. My background is in meteorology, so I naturally focused first on forecasts, numerical models, and whether the resulting products made scientific sense.
 
-Working in an operational environment gradually pulled me deeper into the engineering behind those forecasts. Data had to be collected, moved between systems, processed on HPC clusters, transformed into downstream products, stored, monitored, and delivered on schedule. Before long, I was spending as much time thinking about pipelines, distributed workloads, data access, and system reliability as I was about the forecast itself.
-
-The domain did not change, but my perspective did. I was still working in meteorology, yet many of the problems I was solving had become problems of data engineering and production operations, and the first gap that became obvious was orchestration.
+Working in an operational environment gradually pulled me deeper into the engineering behind those forecasts. Data had to be collected, moved between systems, processed on HPC clusters, transformed into downstream products, stored, monitored, and delivered on schedule. Many of the problems I was solving had become problems of data engineering and production operations, and the first gap that became obvious was workflow orchestration.
 
 ## 1. Scheduling is not orchestration
 
@@ -45,31 +43,39 @@ post-processing
 file transfer
 ```
 
-If only the final transfer fails, rerunning an expensive computation usually makes little sense.
+If only the final transfer fails, rerunning an expensive computation usually makes little sense. Likewise, if upstream data has not arrived yet, immediately marking the entire workflow as failed may not be the right response either.
 
-If upstream data has not arrived yet, immediately marking the entire workflow as failed may not be the right response either.
+Those are dependency and recovery problems, not scheduling problems. 
 
-Those are dependency and recovery problems, not scheduling problems.
+Of course, we can handle them with Bash or Python. We can add retry loops, status files, SSH commands, conditional checks, and more scripts around existing scripts. I have done that too.
+
+The problem is that, as the workflow grows, more of its operational logic becomes hidden inside custom code. Dependencies become harder to see, recovery procedures become less obvious, monitoring is fragmented, and a newcomer may need to read several scripts just to understand how one production workflow actually runs.
 
 This was one reason I started introducing <a href="https://docs.prefect.io/v3/get-started" target="_blank" rel="noopener noreferrer">Prefect</a> into parts of the workflows I maintained.
 
 The idea was not to replace Linux, Bash, SSH, or SLURM. Those systems were already good at executing work.
 
-I wanted an orchestration layer to coordinate them.
+Instead, I wanted an orchestration layer above them. Here is the example.
 
 ```text
-                 Prefect
-                    │
-        ┌───────────┼───────────┐
-        ↓           ↓           ↓
-   Data jobs     HPC jobs    Distribution
-      │             │             │
-   Python         SLURM         rsync/SSH
+                         Prefect Server
+                               │
+                     orchestration / state
+                               │
+             ┌───────────────────┼─────────────────┐
+             │                 │                 │
+        Some worker       HPC worker         DRC worker
+        / work pool        / work pool        / work pool
+             │                 │                 │
+        Python / Bash       SLURM jobs         SLURM jobs
+        SSH / rsync        processing         processing
+             │                 │                 │
+        data pipelines     HPC workloads      backup workloads
 ```
 
 One lesson that became important to me was that **an orchestrator does not need to become the compute engine**.
 
-Its value can simply be knowing what should run, where it should run, what it depends on, and what state each part of the workflow is currently in.
+The orchestrator adds something different: it keeps track of what should run, where it should run, what it depends on, and what state each part of the workflow is currently in.
 
 That coordination problem will be the focus of the first technical article in this series.
 
