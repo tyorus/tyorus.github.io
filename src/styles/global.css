@@ -1210,3 +1210,129 @@ main {
     transform: none;
   }
 }
+
+/* Contact form */
+.contact-grid {
+  align-items: start;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form-field label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  transition: border-color var(--ease);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--ink-muted);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.form-field--honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-alert {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.form-status {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.form-status--idle {
+  display: none;
+}
+
+.form-status--processing {
+  display: block;
+  border-color: var(--ink-muted);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--line) 35%, transparent);
+}
+
+.form-status--success {
+  display: block;
+  border-color: #1e7f4f;
+  color: #1e7f4f;
+  background: color-mix(in srgb, #1e7f4f 8%, transparent);
+}
+
+.form-status--warning {
+  display: block;
+  border-color: #b8860b;
+  color: #8a6914;
+  background: color-mix(in srgb, #b8860b 10%, transparent);
+}
+
+.form-status--error {
+  display: block;
+  border-color: #c0392b;
+  color: #c0392b;
+  background: color-mix(in srgb, #c0392b 8%, transparent);
+}
+
+.form-status strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.form-status__detail {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.contact-fallback {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.contact-fallback a {
+  color: var(--ink);
+}
+
+.contact-form button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

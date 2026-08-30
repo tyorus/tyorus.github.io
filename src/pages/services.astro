@@ -15,7 +15,9 @@ import { services } from '../data/services';
     </p>
     <!-- <p>{services.lede}</p> -->
     <div class="cta-row" style="margin-top: 1.5rem;">
-      <a class="btn btn--primary" href={`mailto:${site.email}?subject=Workflow%20Automation%20Audit`}>Book an audit</a>
+      <a class="btn btn--primary" href="/contact?type=client&subject=Workflow%20Automation%20Audit"
+        >Book an audit</a
+      >
       <a class="btn btn--ghost" href="/projects">See projects</a>
       <a class="btn btn--ghost" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
@@ -63,7 +65,7 @@ import { services } from '../data/services';
       </ul>
       <p style="margin-top: 1rem;">{services.cta}</p>
       <div class="cta-row" style="margin-top: 1.25rem;">
-        <a class="btn btn--primary" href={`mailto:${site.email}`}>Email {site.email}</a>
+        <a class="btn btn--primary" href="/contact?type=client">Send a message</a>
       </div>
     </div>
   </section>

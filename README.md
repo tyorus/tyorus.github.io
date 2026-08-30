@@ -51,7 +51,73 @@ lang: en
 - `/projects` · `/projects/<slug>`
 - `/blog` · `/blog/<slug>`
 - `/services` — freelance automation
+- `/contact` — contact form
 - `/posts/<slug>` · `/tutorials/<slug>` — legacy redirects → blog
+
+## Contact form
+
+The `/contact` page submits to a Supabase Edge Function that stores submissions, sends email via [Resend](https://resend.com), and notifies Telegram.
+
+### Local env
+
+```bash
+cp .env.example .env
+```
+
+Fill in:
+
+- `PUBLIC_SUPABASE_URL` — Supabase project URL
+- `PUBLIC_SUPABASE_ANON_KEY` — Supabase anon/public key
+- `PUBLIC_SUPABASE_CONTACT_FUNCTION` — edge function slug (default: `rapid-action`)
+
+Email and Telegram are **not** read from this file. They are configured for the edge function — see [`supabase/functions/.env.example`](supabase/functions/.env.example).
+
+### Supabase setup
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. Run the migration in `supabase/migrations/001_contact_submissions.sql` (SQL editor or `supabase db push`).
+3. Deploy the edge function:
+
+```bash
+supabase functions deploy contact-submit
+```
+
+4. Set edge function secrets — copy [`supabase/functions/.env.example`](supabase/functions/.env.example) and set values via **Dashboard → Edge Functions → Secrets**, or locally:
+
+```bash
+cp supabase/functions/.env.example supabase/functions/.env
+# edit supabase/functions/.env, then for local testing:
+supabase functions serve rapid-action --env-file supabase/functions/.env
+```
+
+| Secret | Example |
+|--------|---------|
+| `RESEND_API_KEY` | Resend API key |
+| `CONTACT_TO_EMAIL` | `tyo.suwignyo@gmail.com` |
+| `CONTACT_FROM_EMAIL` | Verified sender on Resend (e.g. `contact@tyorus.com`) |
+| `TELEGRAM_BOT_TOKEN` | From [@BotFather](https://t.me/BotFather) |
+| `TELEGRAM_CHAT_ID` | Your chat ID (`getUpdates` after messaging the bot) |
+
+`SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are available automatically inside edge functions.
+
+### GitHub Pages build
+
+Add repository secrets for the static site build:
+
+- `PUBLIC_SUPABASE_URL`
+- `PUBLIC_SUPABASE_ANON_KEY`
+
+These are injected at build time in `.github/workflows/pages-deploy.yml`.
+
+### Resend
+
+Sign up, verify your domain (or use the sandbox sender for testing), and create an API key. The `CONTACT_FROM_EMAIL` must be a verified sender/domain in Resend.
+
+### Telegram
+
+1. Create a bot via BotFather and copy the token.
+2. Send a message to the bot.
+3. Open `https://api.telegram.org/bot<TOKEN>/getUpdates` and copy your `chat.id`.
 
 ## Custom domain
 

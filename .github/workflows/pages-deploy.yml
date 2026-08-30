@@ -38,6 +38,9 @@ jobs:
         run: npm run build
         env:
           SITE: ${{ steps.pages.outputs.origin }}
+          PUBLIC_SUPABASE_URL: ${{ secrets.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PUBLIC_SUPABASE_ANON_KEY }}
+          PUBLIC_SUPABASE_CONTACT_FUNCTION: rapid-action
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

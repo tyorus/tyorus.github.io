@@ -16,6 +16,8 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+supabase/functions/.env
+supabase/.env
 
 # macOS-specific files
 .DS_Store

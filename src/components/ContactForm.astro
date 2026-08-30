@@ -1,0 +1,125 @@
+---
+import { contact, inquiryTypes } from '../data/contact';
+
+interface Props {
+  defaultInquiryType?: string;
+  defaultSubject?: string;
+}
+
+const { defaultInquiryType = '', defaultSubject = '' } = Astro.props;
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? '';
+const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY ?? '';
+const contactFunction = import.meta.env.PUBLIC_SUPABASE_CONTACT_FUNCTION ?? 'rapid-action';
+const isConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+
+const formCopy = {
+  processing: contact.processing,
+  success: contact.success,
+  savedPartial: contact.savedPartial,
+  savedOnly: contact.savedOnly,
+  error: contact.error,
+  configError: contact.configError,
+  submit: contact.submit,
+  submitting: contact.submitting,
+  validation: contact.validation,
+};
+---
+
+<form
+  class="contact-form"
+  id="contact-form"
+  novalidate
+  data-supabase-url={supabaseUrl}
+  data-supabase-anon-key={supabaseAnonKey}
+  data-contact-function={contactFunction}
+  data-is-configured={isConfigured ? 'true' : 'false'}
+>
+  <div
+    class="form-status form-status--idle"
+    id="contact-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+  </div>
+
+  <div class="form-field">
+    <label for="contact-name">{contact.fields.name}</label>
+    <input
+      id="contact-name"
+      name="name"
+      type="text"
+      autocomplete="name"
+      required
+      maxlength="120"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="contact-email">{contact.fields.email}</label>
+    <input
+      id="contact-email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      inputmode="email"
+      required
+      maxlength="254"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="contact-inquiry-type">{contact.fields.inquiryType}</label>
+    <select id="contact-inquiry-type" name="inquiryType" required>
+      {
+        !defaultInquiryType && (
+          <option value="" disabled selected>
+            Select one…
+          </option>
+        )
+      }
+      {
+        inquiryTypes.map((type) => (
+          <option value={type.value} selected={defaultInquiryType === type.value}>
+            {type.label}
+          </option>
+        ))
+      }
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="contact-subject">{contact.fields.subject}</label>
+    <input
+      id="contact-subject"
+      name="subject"
+      type="text"
+      maxlength="200"
+      value={defaultSubject}
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="contact-message">{contact.fields.message}</label>
+    <textarea id="contact-message" name="message" rows="6" required minlength="10" maxlength="5000"
+    ></textarea>
+  </div>
+
+  <div class="form-field form-field--honeypot" aria-hidden="true">
+    <label for="contact-website">Website</label>
+    <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="cta-row">
+    <button class="btn btn--primary" type="submit" id="contact-submit">
+      {contact.submit}
+    </button>
+  </div>
+</form>
+
+<script type="application/json" id="contact-form-copy" set:html={JSON.stringify(formCopy)} />
+
+<script>
+  import '../scripts/contact-form.ts';
+</script>

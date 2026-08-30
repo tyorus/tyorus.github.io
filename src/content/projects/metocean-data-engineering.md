@@ -17,15 +17,15 @@ lang: en
 
 I did not start my career thinking of myself as a data engineer. My background is in meteorology, so I naturally focused first on forecasts, numerical models, and whether the resulting products made scientific sense.
 
-Working in an operational environment gradually pulled me deeper into the engineering behind those forecasts. Data had to be collected, moved between systems, processed on HPC clusters, transformed into downstream products, stored, monitored, and delivered on schedule. Many of the problems I was solving had become problems of data engineering and production operations, and the first gap that became obvious was workflow orchestration.
+Working in an operational environment gradually pulled me deeper into the engineering behind those forecasts. Data had to be collected, moved between systems, processed on HPC clusters, transformed into downstream products, stored, monitored, and delivered on schedule. Many of the problems I was solving had become problems of data engineering and production operations.
+
+Here, I identified 4 prominent problems that significantly impacted to the efficient of production chain in operational ocean forecasting system.
 
 ## 1. Scheduling is not orchestration
 
 Cron, Bash, Python, SSH, and similar tools can automate a surprising amount of operational work. I have worked with workflows built around exactly those tools, and they are not inherently the problem.
 
 The limitation appears when scheduling starts being treated as orchestration.
-
-A scheduler can tell a command when to start. It does not necessarily understand what should happen after a stage succeeds, fails, waits for upstream data, or produces an output that can safely be reused.
 
 Consider a simplified workflow:
 
@@ -58,24 +58,22 @@ The idea was not to replace Linux, Bash, SSH, or SLURM. Those systems were alrea
 Instead, I wanted an orchestration layer above them. Here is the example.
 
 ```text
-                         Prefect Server
+                    Prefect Host Server
                                │
                      orchestration / state
                                │
-             ┌───────────────────┼─────────────────┐
+             ┌───────────────────┼──────────────────┐
              │                 │                 │
-        Some worker       HPC worker         DRC worker
+        Some worker       HPC worker         Another worker
         / work pool        / work pool        / work pool
              │                 │                 │
-        Python / Bash       SLURM jobs         SLURM jobs
+        Python / Bash       SLURM jobs         Python jobs
         SSH / rsync        processing         processing
              │                 │                 │
-        data pipelines     HPC workloads      backup workloads
+        data routines     HPC workloads      some workloads
 ```
 
-One lesson that became important to me was that **an orchestrator does not need to become the compute engine**.
-
-The orchestrator adds something different: it keeps track of what should run, where it should run, what it depends on, and what state each part of the workflow is currently in.
+One lesson that became important to me was that **an orchestrator does not need to become the compute engine**. It will keeps track of what should run, where it should run, what it depends on, and what state each part of the workflow is currently in.
 
 That coordination problem will be the focus of the first technical article in this series.
 

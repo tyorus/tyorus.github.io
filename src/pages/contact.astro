@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+import { contact } from '../data/contact';
+import { services } from '../data/services';
+
+const typeParam = Astro.url.searchParams.get('type') ?? '';
+const subjectParam = Astro.url.searchParams.get('subject') ?? '';
+const defaultInquiryType = ['client', 'professional', 'general'].includes(typeParam) ? typeParam : '';
+---
+
+<BaseLayout
+  fullTitle={`Contact — ${site.name} · ${site.title}`}
+  description={`Contact ${site.name} — prospective clients, professional connections, and general inquiries.`}
+>
+  <section class="site-shell page-hero">
+    <h1>{contact.headline}</h1>
+    <p>{contact.lede}</p>
+  </section>
+
+  <section class="site-shell resume-grid contact-grid">
+    <div class="resume-block">
+      <h2>Send a message</h2>
+      <ContactForm defaultInquiryType={defaultInquiryType} defaultSubject={subjectParam} />
+      <p class="contact-fallback">
+        Prefer email directly? <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+
+    <div class="resume-block">
+      <!-- <h2>If you are a prospective client</h2>
+      <p style="margin-top: 0; color: var(--ink-muted);">
+        A few details help me reply with a useful next step:
+      </p>
+      <ul class="focus-list">
+        {contact.clientChecklist.map((item) => <li>{item}</li>)}
+      </ul>
+      <p style="margin-top: 1rem;">{services.cta}</p> -->
+      <div class="cta-row" style="margin-top: 1.25rem;">
+        <a class="btn btn--ghost" href="/services">View services</a>
+        <a class="btn btn--ghost" href={site.links.linkedin} target="_blank" rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>
