@@ -19,7 +19,7 @@ I did not start my career thinking of myself as a data engineer. My background i
 
 Working in an operational environment gradually pulled me deeper into the engineering behind those forecasts. Data had to be collected, moved between systems, processed on HPC clusters, transformed into downstream products, stored, monitored, and delivered on schedule. Many of the problems I was solving had become problems of data engineering and production operations.
 
-Here, I identified 4 prominent problems that significantly impacted to the efficient of production chain in operational ocean forecasting system.
+Here, I identified four key problems that significantly affected the efficiency of our operational ocean forecasting workflow.
 
 ## 1. Scheduling is not orchestration
 
@@ -43,17 +43,17 @@ post-processing
 file transfer
 ```
 
-If only the final transfer fails, rerunning an expensive computation usually makes little sense. Likewise, if upstream data has not arrived yet, immediately marking the entire workflow as failed may not be the right response either.
+If only the final transfer fails, rerunning an expensive computation (SLURM job) makes little sense. Likewise, if upstream data has not arrived yet, marking the entire workflow as failed may not be the right response either.
 
-Those are dependency and recovery problems, not scheduling problems. 
+Those are dependency and recovery problems. 
 
-Of course, we can handle them with Bash or Python. We can add retry loops, status files, SSH commands, conditional checks, and more scripts around existing scripts. I have done that too.
+Of course, we can handle them with Bash or Python. We can add retry loops, conditional checks, and more scripts around or inside the existing scripts. I have done that too.
 
-The problem is that, as the workflow grows, more of its operational logic becomes hidden inside custom code. Dependencies become harder to see, recovery procedures become less obvious, monitoring is fragmented, and a newcomer may need to read several scripts just to understand how one production workflow actually runs.
+The problem is that, as the workflow grows, more of its operational logic becomes hidden inside the custom code. Dependencies become harder to see, recovery procedures become less obvious, and a newcomer may need to read several scripts just to understand how one production workflow actually runs.
 
 This was one reason I started introducing <a href="https://docs.prefect.io/v3/get-started" target="_blank" rel="noopener noreferrer">Prefect</a> into parts of the workflows I maintained.
 
-The idea was not to replace Linux, Bash, SSH, or SLURM. Those systems were already good at executing work.
+The idea was not to replace all of the existing programs. Those were already good at executing work.
 
 Instead, I wanted an orchestration layer above them. Here is the example.
 
@@ -75,45 +75,25 @@ Instead, I wanted an orchestration layer above them. Here is the example.
 
 One lesson that became important to me was that **an orchestrator does not need to become the compute engine**. It will keeps track of what should run, where it should run, what it depends on, and what state each part of the workflow is currently in.
 
-That coordination problem will be the focus of the first technical article in this series.
+That problem will be the focus of the first technical article in this series.
 
-## 2. The fastest computation is not always the best one
+## 2. Deploying programs on HPC
 
-The next gap appears once the workflow reaches its compute-heavy stages.
+The next challenge appears once the workflow reaches its compute-heavy stages.
 
-It is tempting to assume that giving a numerical workload more compute resources should make it proportionally faster.
+I believe many of my colleagues have experience running NWP models on their own laptops, especially WRF during college. When moving the same kind of workload to an HPC cluster, it is tempting to assume that simply allocating more processors will make the model run proportionally faster.
 
-In distributed modeling, that assumption eventually breaks down.
+In practice, distributed computing does not work that way.
 
-I have spent time benchmarking operational wave-model workloads under different SLURM configurations, looking at runtime, node allocation, task configuration, and memory usage.
+Running a program on HPC is one thing, running it efficiently is another. It requires understanding how the workload behaves across multiple nodes and finding the configuration that makes the best use of the available resources.
 
-What became more interesting than finding the fastest run was understanding the trade-off behind it.
+The objective was simple: to find minimum possible runtime.
 
-The operational objective is rarely just:
+For an operational forecasting system, every minute matters. Model output has to be available before downstream processing, visualization, dissemination, and ultimately the forecast deadline.
 
-```text
-minimum possible runtime
-```
+> Adding more computing resources does not always make a model run much faster. 
 
-It is usually closer to:
-
-```text
-acceptable runtime
-        +
-resource efficiency
-        +
-operational deadline
-        +
-shared cluster capacity
-```
-
-Additional nodes introduce their own costs through communication, synchronization, I/O, and parts of the workload that do not scale perfectly.
-
-At some point, significantly more compute may provide only a small reduction in runtime.
-
-That creates an important distinction:
-
-> **The fastest configuration and the best operational configuration are not necessarily the same thing.**
+At some point, using more nodes or CPUs may only give a small improvement, so running a numerical model on HPC still requires some testing to find the most effective configurations.
 
 The second article will explore this through performance benchmarking of an operational wave-model workload.
 
@@ -121,7 +101,7 @@ The second article will explore this through performance benchmarking of an oper
 
 Then there is the model output itself.
 
-Forecast and ocean datasets are naturally multidimensional:
+Datasets from NWP models are naturally multidimensional, typically they have the following dimensions:
 
 ```text
 time
@@ -131,11 +111,11 @@ depth
 variable
 ```
 
-NetCDF remains extremely useful for scientific data exchange and numerical-model output, and I still use it extensively.
+<a href="https://en.wikipedia.org/wiki/NetCDF" target="_blank" rel="noopener noreferrer">NetCDF</a> remains extremely useful for scientific data exchange and numerical-model output, and we still use it extensively.
 
 But while working on downstream analysis workflows, I became more aware of another distinction:
 
-> **A format that works well for producing or archiving data does not automatically match every downstream access pattern.**
+> **A format that works well for producing data does not automatically match every downstream access pattern.**
 
 This became particularly visible while working on climatological analysis.
 
