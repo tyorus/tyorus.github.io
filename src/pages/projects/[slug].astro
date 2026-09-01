@@ -1,9 +1,10 @@
 ---
 import ContentDoc from '../../components/ContentDoc.astro';
 import { getCollection, render } from 'astro:content';
+import { forStaticPaths } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('projects');
+  const posts = forStaticPaths(await getCollection('projects'));
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },

@@ -15,6 +15,7 @@ const postSchema = z.object({
   categories: z.array(z.string()).default([]),
   math: z.boolean().default(false),
   lang: z.enum(['en', 'id']).default('en'),
+  draft: z.boolean().default(false),
 });
 
 const blog = defineCollection({

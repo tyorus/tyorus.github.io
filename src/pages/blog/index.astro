@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { forListing } from '../../lib/content';
 import { site } from '../../data/site';
 
-const posts = (await getCollection('blog')).sort(
+const posts = forListing(await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
