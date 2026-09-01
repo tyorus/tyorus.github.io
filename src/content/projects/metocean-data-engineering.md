@@ -49,7 +49,7 @@ Those are dependency and recovery problems.
 
 Of course, we can handle them with Bash or Python. We can add retry loops, conditional checks, and more scripts around or inside the existing scripts. I have done that too.
 
-The problem is that, as the workflow grows, more of its operational logic becomes hidden inside the custom code. Dependencies become harder to see, recovery procedures become less obvious, and a newcomer may need to read several scripts just to understand how one production workflow actually runs.
+> The problem is that, as the workflow grows, more of its operational logic becomes hidden inside the custom code. Dependencies become harder to see, recovery procedures become less obvious, and a newcomer may need to read several scripts just to understand how one production workflow actually runs.
 
 This was one reason I started introducing <a href="https://docs.prefect.io/v3/get-started" target="_blank" rel="noopener noreferrer">Prefect</a> into parts of the workflows I maintained.
 
@@ -91,17 +91,19 @@ The objective was simple: to find minimum possible runtime.
 
 For an operational forecasting system, every minute matters. Model output has to be available before downstream processing, visualization, dissemination, and ultimately the forecast deadline.
 
+Here is what I found:
+
 > Adding more computing resources does not always make a model run much faster. 
 
 At some point, using more nodes or CPUs may only give a small improvement, so running a numerical model on HPC still requires some testing to find the most effective configurations.
 
 The second article will explore this through performance benchmarking of an operational wave-model workload.
 
-## 3. Storage should follow how data is used
+## 3. Data format should be optimized for easy of use
 
 Then there is the model output itself.
 
-Datasets from NWP models are naturally multidimensional, typically they have the following dimensions:
+Datasets from NWP models are naturally multidimensional, typically they contains the following dimensions:
 
 ```text
 time
@@ -113,55 +115,25 @@ variable
 
 <a href="https://en.wikipedia.org/wiki/NetCDF" target="_blank" rel="noopener noreferrer">NetCDF</a> remains extremely useful for scientific data exchange and numerical-model output, and we still use it extensively.
 
-But while working on downstream analysis workflows, I became more aware of another distinction:
+However, while working on downstream analysis workflows, I became more aware that the way these datasets are stored is not always ideal for every use case. 
 
-> **A format that works well for producing data does not automatically match every downstream access pattern.**
+Consider the case for climatological analysis. 
 
-This became particularly visible while working on climatological analysis.
+> As the historical collection grows, the challenge is no longer only how to store individual model outputs, but also how we can access and process data across months or years efficiently.
 
-One request might need:
+This pushed me to explore storage formats designed around different access patterns, which eventually led me to <a href="https://en.wikipedia.org/wiki/Zarr_(data_format)" target="_blank" rel="noopener noreferrer">Zarr</a>.
 
-```text
-one variable
-    +
-one spatial region
-    +
-several years
-    +
-one depth level
-```
-
-Another might need:
-
-```text
-one location
-    +
-a long time series
-```
-
-They are completely different ways of reading the same underlying dataset.
-
-As the historical collection grew, the problem stopped being only about computation. Data organization and access increasingly mattered.
-
-That pushed me further into Xarray, NetCDF, Zarr, chunking strategies, compression, and S3-compatible object storage.
-
-The question became less about:
-
-> Which file format is best?
-
-and more about:
-
-> **How should the data be organized around the way it will actually be used?**
+Zarr is particularly useful for large multidimensional datasets because the data can be stored in chunks and accessed in parallel without reading an entire file. It also works naturally with object storage, making it well suited for cloud-based access and processing.
 
 The third article will focus on this shift from model-output-oriented files toward storage and access patterns designed for downstream analysis.
 
-## 4. A healthy server does not mean a healthy product
+## 4. A successful workflow does not mean a healthy product
 
-The final gap is observability and resilience.
+The final gap is observability.
 
-I have worked with Grafana and Zabbix, including maintaining monitoring infrastructure that was delivered as part of larger operational systems.
+In operational systems, it is tempting to define health through infrastructure metrics or workflow states.
 
-These tools can tell us a lot about infrastructure:
+A server may report:
 
 ```text
 CPU          healthy
@@ -171,39 +143,32 @@ network      healthy
 process      running
 ```
 
-Yet the latest forecast can still be stale.
+An orchestrator may also report that the latest workflow completed successfully.
 
-That means operational health exists at several layers:
+Yet the forecast products available to users can still be stale.
+
+This made me think about operational health as several connected layers:
 
 ```text
-Infrastructure
-      ↓
-Workflow
-      ↓
-Data
-      ↓
-Product
+Infrastructure -> Workflow -> Data -> Product
 ```
 
-Infrastructure monitoring asks whether hosts and services are available.
+- Infrastructure monitoring asks whether hosts and services are available.
+- Workflow monitoring asks whether expected processes actually ran.
+- Data monitoring asks whether expected outputs exist, are complete, and belong to the correct forecast cycle.
+- Product monitoring asks whether the current forecast has actually reached the system that users depend on.
 
-Workflow monitoring asks whether expected processes actually ran.
+In practice, I use tools such as Grafana to make some of these signals easier to observe, particularly data freshness across operational products. 
 
-Data monitoring asks whether expected outputs exist, are complete, and belong to the correct forecast cycle.
+For an operational forecasting system, the final question is not simply:
 
-Product monitoring asks whether the current forecast has actually reached the system that users depend on.
+> Is the system running?
 
-The important distinction is simple:
+but
 
-> **Infrastructure availability is not the same as product availability.**
+> Is the latest expected forecast product actually available to the user?
 
-The same principle applies to recovery.
-
-If a long-running model has already completed successfully and only a downstream transfer fails, rerunning the entire forecast is not really recovery. It is unnecessary recomputation.
-
-A more resilient workflow should preserve valid completed work and repeat only the stage that actually failed.
-
-That will be the focus of the final article: monitoring, workflow state, freshness, alerts, and recovery.
+The final article will explore this end-to-end view of observability, from infrastructure and workflow states to data freshness and operational product availability.
 
 ## Where this series goes next
 
@@ -211,36 +176,27 @@ The series will follow four connected engineering problems:
 
 ### 01. From Cron Jobs to Orchestrated Forecast Workflows
 
-Scheduling, dependencies, distributed execution, retries, and using Prefect around existing Python, Bash, SSH, and SLURM workflows.
+How scheduling evolves into orchestration once workflows span multiple machines and execution environments. This article will cover dependencies, retries and recovery, distributed execution, configuration, and reproducibility using Prefect around existing Python, Bash, SSH, and SLURM workflows.
 
 ### 02. The Compute Engine
 
-Benchmarking operational wave-model workloads and finding the balance between runtime and HPC resource consumption.
+How to run numerical workloads efficiently on HPC rather than simply allocating more resources. This article will explore SLURM, performance benchmarking, scaling behaviour, and the trade-off between runtime and resource consumption.
 
 ### 03. Storing Multidimensional Geospatial Data
 
-How downstream analytical requirements changed the way I thought about NetCDF, Xarray, Zarr, chunking, and object storage.
+How downstream analytical requirements change the way model output should be organized. This article will explore NetCDF, Xarray, chunking, Zarr, object storage, and how different access patterns influence storage design.
 
 ### 04. Production Resilience
 
-Monitoring infrastructure, workflows, data freshness, and forecast products—and recovering when one part of the system fails.
-
-These are not four unrelated projects.
-
-They are different manifestations of the same engineering challenge: **turning scientific computation into something dependable enough to run repeatedly in production.**
-
+How to determine whether an operational forecasting system is actually healthy. This article will connect infrastructure monitoring, workflow state, data quality and freshness, product availability, metrics, dashboards, and alerts into a broader view of operational health.
 
 ## Disclaimer
 
-Everything I describe exists within a larger team-operated environment.
+Everything I describe exists within a team-operated environment.
 
-I did not build the entire operational ocean forecasting system. Some components existed long before I worked on them. Others were developed by colleagues, researchers, vendors, or different engineering teams.
+I did not build the entire operational ocean forecasting system. Some components existed long before I worked on them. Others were developed by colleagues or different engineering teams.
 
-What I can speak about directly are the parts I personally worked on: workflows I automated, systems I maintained, benchmarks I ran, data architectures I experimented with, monitoring I built or operated, and operational problems I investigated.
-
-Infrastructure details will be generalized where appropriate.
-
-The purpose of this series is not to document an internal forecasting platform. It is to extract engineering lessons that remain useful beyond ocean forecasting.
+I will focus only on the areas I worked on directly. The goal is not to document an internal platform, but to extract engineering lessons that are useful beyond ocean forecasting.
 
 Because producing a forecast is only one part of the problem.
 
